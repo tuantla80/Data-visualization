@@ -10,3 +10,6 @@ dashboard using D3.js.
 2. svg_elements (circle, rect, ect).html
 - Making svg elements.
 - Applying this simple element to make scatter plot, line plot and legend, ect.
+3. Scaling
+- Domain values (our real data values) --> convert to --> Range values (pixel values)
+- 4 categories: continuous, ordinal (category), sequential (ex. range [0,1]), quantize (ex. each range for each bin color)
