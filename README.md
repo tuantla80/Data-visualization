@@ -7,3 +7,6 @@ dashboard using D3.js.
 - Loading data: *.json, *.csv, *.tsv,... 
 - Using map() function: map for every object {...} in json file
 - Making simple html table
+2. svg_elements (circle, rect, ect).html
+- Making svg elements.
+- Applying this simple element to make scatter plot, line plot and legend, ect.
