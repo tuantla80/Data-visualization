@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <table id="table"></table>  <!-- Add a table tag to html -->
+
+        <script src="https://d3js.org/d3.v4.min.js"></script> <!-- v4, v5 --> <!--<script src="../../lib/d3.js"></script>  At local PC-->
+
+        <script type="text/javascript">
+            //console.log("Starting d3 code");
+            d3.json("info.json", function (error, rawData) {
+                if (error) throw error;
+                var data = rawData.map(function (d) {
+                    return {
+                        name: d['name'],
+                        age: +d['age'],  // convert string to number
+                        city: d.city     // another way to access
+                    };
+                });
+
+                var table = d3.select("#table");  // d3.select will find elements in DOM. select a tag id=table (refer to above)
+                var thead = table.append("thead"); //
+                var htr = thead.append("tr");
+
+                htr.selectAll("th")
+                    .data(d3.keys(data[0]))
+                    .enter()
+                    .append("th")
+                    .text(function (d) { return d;})
+                    .attr("align", "left");
+
+                var tbody = table.append("tbody");
+
+                var rows = tbody.selectAll("tr")  // tr: table row
+                    .data(data)
+                    .enter()
+                    .append("tr"); // Add many tags based data.   <tr> </tr>
+
+                var cells = rows.selectAll("td") // td: table data (data at each cell)
+                                 .data(function (row) {
+                                    return d3.keys(row).map(function (column) {
+                                        return {column: column, value: row[column]};
+                                    })})
+                                 .enter()
+                                 .append("td")
+                                 .text(function (d) { return d.value; });
+                console.log("all done");
+            });
+        </script>
+    </body>
+<html>
