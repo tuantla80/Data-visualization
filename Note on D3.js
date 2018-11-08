@@ -65,10 +65,10 @@ dashboard using D3.js.
 // Example 2. y axis
 var yAxis = d3.axisLeft()
               .scale(yScale); // NOTE: (0,0) point is at the (top,left) so it will create a invert the axis.
-                               // To make it as normal.  
-                               //  var yScale = d3.scaleLinear()
-                               //                 .domain([d3.max(some_thing), 0]) // NOTE from max to 0
-                               //                 .range([number_1, number_2]);
+                              // To make it as normal.  
+                              //  var yScale = d3.scaleLinear()
+                              //                 .domain([d3.max(some_thing), 0]) // NOTE from max to 0
+                              //                 .range([number_1, number_2]);
 svg.append('g')
    .attr('transform', 'translate(30,0)') // translate: x=30 (pixel) so that it will move to inside the canvas. y=0 (pixel)
    .call(yAxis);
