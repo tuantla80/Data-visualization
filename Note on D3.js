@@ -73,4 +73,6 @@ svg.append('g')
    .attr('transform', 'translate(30,0)') // translate: x=30 (pixel) so that it will move to inside the canvas. y=0 (pixel)
    .call(yAxis);
 
+/* 6. Positioning the axis */
+
 
