@@ -188,11 +188,20 @@ legendBox.attr('width', max+25+20);
 /* 11. Grid lines 
 NOTE: at d3.js, grid lines are actually an axis with the ticks at the opposition direction of normal ticks
 and furthermore its ticks accross the entire visualization.
+In this example the css grid as below:
+        .grid line {
+            stroke: lightgrey;
+            stroke-opacity: 0.75;
+            shape-rendering: crispEdges;
+        }
+        .grid path {
+            stroke-width: 0;
+        }
 */
 svg.append('g')
    .call(xAxis.tickFormat("") // set to empty string because we don't need any lables on ticks.
                .tickSize(-size.height)) // tickSize is over all the graph
-   .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
+   .attr('transform', 'translate(' + margin.left + ',' + margin.bottom +')')
    .attr('class', 'grid');
 
 svg.append('g')
@@ -200,8 +209,49 @@ svg.append('g')
    .attr('transform', 'translate(' + margins.left + ',' + margin.top +')')
    .attr('class', 'grid');
 
+/* 12. nest(), key(), map() and, get() vs filter() 
+   Supposing we want to filter data at year=2000 of test.json file
+*/
+d3.json("../../data/test.json",
+    function (error, rawData) {
+        var allData = rawData.map(function (d) {
+            return {
+                CountryName: d.CountryName,
+                LifeExp: +d.LifeExp,
+                Year: +d.Year
+            }});
+   
+      // Method 1: Filtering data of year=2000. 
+      // It works but less efficient since it has to scan all objects (rows) every time we want to check Year=2000 or 2001, ...
+      dataAtyear2000 = allData.filter(function(d){ // run for every objects at data
+                                                return d.Year===2000  // get object at which Year=2000
+                                               });
 
+     // Method 2: Filtering data of year=2000. 
+     // It works in a more efficient way.
+     var nested = d3.nest()
+                    .key(function (d) { return d.Year; }) // will use the "Year" as a key
+                    .map(allData); // Making nested as for every year. (key is a year)
+     dataAtyear2000 = nested.get(2000);
 
+/* 13. Making a reusable D3.js code
+- Method 1. Build as an object.
+- Method 2: Make a some (big) functions
+- NOTE: using "var x=svg.append('g')....."  may make it not visible to other functions. So sometimes just remove "var".
+ */
 
-
+/* 14. Animation with timers  */
+ maxYear = 2018, minYear=1950, currentYear=minYear;
+ var timer = d3.interval(function(elapsed){
+                    console.log(elapsed); // will run every 500ms (see below)
+                    currentYear++;
+                    if (currentYear <= maxYear){
+                       render_a_plot(nested.get(currentYear)); // Run a render_a_plot() function of data at which Year=currentYear
+                    } else {
+                       console.log("stop");
+                       timer.stop();
+                    }
+                }, 500);
+            });
+// NOTE: Sometimes we can remove plot. Ex. bubblesGroup.selectAll("*").remove(); 
 
