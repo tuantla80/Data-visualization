@@ -107,11 +107,10 @@ function stylingAxisElement(axisGroup){
 stylingAxisElement(xAxisGroup)
 stylingAxisElement(yAxisGroup)
 
-/* 8. Adding Tittle to Axese */
-
+/* 8. Adding Tittle to Axes */
 // x axis title
 svg.append('text')
-   .text('X title)
+   .text('X title')
    .attr('transform',  // Need transform and translate (x and y) so that its position is on the good place.
          'translate(' + (margin.left + size.width/2) + ',' + (size.height - 15) + ')')
    .attr('text-anchor', 'middle'); // to make the text at the "middle"
@@ -124,13 +123,83 @@ svg.append('text')
    .attr('text-anchor', 'middle');
 });
 
+/* 9. Custom Tick Labels */
+// For x axis (ver similar to y axis
+ var xAxis = d3.axisBottom().scale(xScale)
+               .ticks(30)
+               .tickFormat(function (d){ // NOTE. Add a function to tickFormat so that we can customize ticks
+                   return d + " Years"; // every tick will plus with " Years"
+               });
+var xAxisNodes = svg.append('g')
+                    .attr('transform', 'translate(' + margin.left + ',' + (size.height - margin.bottom) + ')')
+                    .call(xAxis);
+xAxisNodes.selectAll('text')
+           .attr('transform', 'rotate(120)') // NOTE: rotate ticks in 120 degree
+           .attr('text-anchor', 'start') 
+           .attr('dy', '-1.5em') // "dy" attribute is for the size of the text. (co-ordinate is still (0,0) is (top, left)
+                                 // 1em is the number of pixels of a font size. 
+                                 // Ex. for a base font size of 12px , a value of 1em is translated into 12px 
+           .attr('dx', '0.5em');
 
 
+/* 10. Legends */
+var legendGroup = svg.append('g')
+                     .attr('transform', 'translate(' + size.width + ',' + mangin.top + ')');
 
+var legendBox = legendGroup  // a rectangle
+   .append('rect')
+   .attrs({
+       fill: 'white',
+       stroke: 'black',
+       width: 300,
+       height: regionColorMap.domain().length * 25 + 10, // number of unique items is regionColorMap.domain().length
+       'fill-opacity': 0.5
+   });
+var subLegendGroup = legendGroup.append('g');
+var legendSubGroups = subLegendGroup.selectAll('rect')
+   .data(regionColorMap.domain())
+   .enter()
+   .append('g')
+   .attr('transform', function (d,i){
+       return 'translate(10,' + ((i*25)+5) + ')';
+   });
+legendSubGroups
+   .append('rect')
+   .attrs({
+       x:0, y:0, 
+       width: 20, height: 20,
+       fill: function (d,i){
+           return regionColorMap(d);
+       }
+   });
+var legendTexts = legendSubGroups
+   .append('text')
+   .text(function (d) { return d; })
+   .attrs({
+       x: 25,
+       y: 15
+   });
 
+var max = d3.max(legendTexts.nodes(), // get a longest text
+   n=> n.getComputedTextLength());
 
+legendBox.attr('width', max+25+20);
+      
+/* 11. Grid lines 
+NOTE: at d3.js, grid lines are actually an axis with the ticks at the opposition direction of normal ticks
+and furthermore its ticks accross the entire visualization.
+*/
+svg.append('g')
+   .call(xAxis.tickFormat("") // set to empty string because we don't need any lables on ticks.
+               .tickSize(-size.height)) // tickSize is over all the graph
+   .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
+   .attr('class', 'grid');
 
-  
+svg.append('g')
+   .call(yAxis.tickFormat("").tickSize(-size.width))
+   .attr('transform', 'translate(' + margins.left + ',' + margin.top +')')
+   .attr('class', 'grid');
+
 
 
 
