@@ -74,5 +74,34 @@ svg.append('g')
    .call(yAxis);
 
 /* 6. Positioning the axis */
+var outerSize = {width: 800,  // 800 is 800 pixel
+                 height: 600}; // they are svg width and height of the canvas
+var outerAxisPadding=10, xAxisWidth=20, yAxisWidth=20;
+var margin = {top: outerAxisPadding, 
+              bottom: outerAxisPadding + xAxisWidth, 
+              left: outerAxisPadding + yAxisWidth, 
+              right: outerAxisPadding
+             }; // In some ways, we may define margin (top, bottom, left, right) as a number 
+            // (not throught the outerAxisPadding, xAxisWidth, and yAxisWidth)
+var size = {width: outerSize.width - margin.left - margin.right,
+            height: outerSize.height - margin.top - margin.bottom
+           }; // size is inner size of the gragh (not including axes such as axis tick and axis label)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
