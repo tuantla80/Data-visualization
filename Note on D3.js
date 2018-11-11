@@ -87,6 +87,42 @@ var size = {width: outerSize.width - margin.left - margin.right,
             height: outerSize.height - margin.top - margin.bottom
            }; // size is inner size of the gragh (not including axes such as axis tick and axis label)
 
+// Therefore, we can define "g" (grouping of svg elements in the inner size as below).
+ g = svg.append('g') 
+        .attr('transform', 'translate(margin.left, ' + margin.top + ')') // transate: x and y
+        .attr('width', size.width)
+        .attr('height', size.height)
+
+/* 7. Styling Axese */
+function stylingAxisElement(axisGroup){
+   axisGroup.select('.domain') // meaning that searching for all svg elements in that group (yAxisGroup) 
+                             // that has the "domain" css class assigned.
+            .attr(stroke: 'red')
+            .attr('stroke-width': 2);
+   axisGroup.selectAll('.tick line')
+            .atrr(stroke: 'green')
+}
+
+// The we can call function for xAxisGroup and yAxisGroup 
+stylingAxisElement(xAxisGroup)
+stylingAxisElement(yAxisGroup)
+
+/* 8. Adding Tittle to Axese */
+
+// x axis title
+svg.append('text')
+   .text('X title)
+   .attr('transform',  // Need transform and translate (x and y) so that its position is on the good place.
+         'translate(' + (margin.left + size.width/2) + ',' + (size.height - 15) + ')')
+   .attr('text-anchor', 'middle'); // to make the text at the "middle"
+
+// y axis title
+svg.append('text')
+   .text('Y title')
+   .attr('transform', 
+         'translate(20,' + (margin.top + size.height/2) + ') rotate(90)') // NOTE: rotate 90 degree fot Y title
+   .attr('text-anchor', 'middle');
+});
 
 
 
@@ -94,12 +130,7 @@ var size = {width: outerSize.width - margin.left - margin.right,
 
 
 
-
-
-
-
-
-
+  
 
 
 
