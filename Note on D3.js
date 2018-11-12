@@ -255,3 +255,58 @@ d3.json("../../data/test.json",
             });
 // NOTE: Sometimes we can remove plot. Ex. bubblesGroup.selectAll("*").remove(); 
 
+/* 15. General Update Pattern */
+
+/* 16. Navigation using Buttons 
+Inside body make:
+   <div>
+        <button id="decrement">-</button>  <!-- make decrement button with symbol -  -->
+        <label style="text-align: center;" id="currentYearLabel"></label>  <!-- id is currentYearLabel -->
+        <button id="increment">+</button>
+   </div>
+*/
+d3.select("button#increment").on("click", 
+    function handleClick(){
+        if (currentYear++ >= maxYear) currentYear = maxYear
+        update(currentYear, nested.get(currentYear)); // call update() function
+    });
+d3.select("button#decrement").on("click", 
+    function handleClick(){
+        if (--currentYear < minYear) currentYear = minYear
+        update(currentYear, nested.get(currentYear));
+    });
+
+ function update(year, data){
+    console.log("rendering: " + year);
+    d3.select("label#currentYearLabel").html(year); // NOTE: using html() function
+    //... some code below...
+    
+/* 16. Navigation using Slider 
+Inside body make:
+   <div>
+        <button id="decrement">-</button>  <!-- make decrement button with symbol -  -->
+        <label style="text-align: center;" id="currentYearLabel"></label>  <!-- id is currentYearLabel -->
+        <button id="increment">+</button>
+   </div>
+   
+   <div>
+         <input type="range" id="slider"></input>  <!-- id is slider -->
+   </div>
+*/
+ slider = d3.select("input#slider");
+ slider.attrs({
+     "min": minYear,
+     "max": maxYear,
+     "value": currentYear
+ });
+ console.log(slider);
+
+ update(currentYear, nested.get(currentYear));
+//...Some code here...
+    
+d3.select("input#slider").on("input",  // "input" control is "slider"
+       function handleClick(){
+           currentYear = this.value;
+           update(currentYear, nested.get(this.value));
+       });    
+
