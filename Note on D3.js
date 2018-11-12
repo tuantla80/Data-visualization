@@ -309,4 +309,100 @@ d3.select("input#slider").on("input",  // "input" control is "slider"
            currentYear = this.value;
            update(currentYear, nested.get(this.value));
        });    
+    
+    
+/* 17. Animation using Transition 
+In the body make:
+  <div style="position: relative; left:100px; top:10px;">
+       <button onclick="transitionPosition()">Position</button> <!-- will call transitionPosition() when click on Position -->
+       <button onclick="transitionSize()">Size</button>
+       <button onclick="transitionColor()">Color</button>
+       <button onclick="transitionOpacity()">Opacity</button>
+       <button onclick="interrupt()">Interrupt</button>
+       <button onclick="chainedTransition()">Chained</button>
+    </div>
+ Refer to: Transition Easing Comparision https://bl.ocks.org/d3noob/1ea51d03775b9650e8dfd03474e202fe
+           https://github.com/d3/d3-transition  
+*/
+function transitionPosition(){
+   console.log("starting position transition")
+   var transitionDuration = 1000;
+   var select = svg.select("circle");
+   select.transition()
+         .duration(transitionDuration)
+         .attrs({ "cx": 300 });
+}
+    
+function transitionSize(){
+   console.log("starting size transition")
+   var transitionDuration = 5000;
+   var select = svg.select("circle");
+   select
+       .transition()
+       .duration(transitionDuration)
+       .attrs({ "r": 50 });
+   console.log("exiting size transition");
+}
 
+function transitionOpacity(){
+   console.log("starting transition")
+   var transitionDuration = 5000;
+   var select = svg.select("circle");
+   select
+       .transition()
+       .duration(transitionDuration)
+       .attr("opacity", 0.0)
+       .on("interrupt", function(d) { console.log("interrupted"); });
+   console.log("exiting transition");
+}
+
+function interruptedTransition(){
+   console.log("starting transition")
+   var transitionDuration = 5000;
+   var select = svg.select("circle");
+   select
+       .transition()
+       .duration(transitionDuration)
+       .attr("opacity", 0.0)
+       .on("interrupt", function(d) { 
+           console.log("interrupted"); 
+       });
+   console.log("exiting transition")
+}
+
+function chainedTransition(){
+   console.log("starting transition")
+   var transitionDuration = 5000;
+   var select = svg.select("circle");
+   select
+       .transition()
+       .duration(transitionDuration)
+       .attr("opacity", 0.0);
+   console.log("exiting transition")
+}
+
+function chainedInterruptTransition(){
+   console.log("starting transition")
+   var transitionDuration = 5000;
+   var select = svg.select("circle");
+   select
+       .transition()
+       .duration(transitionDuration)
+       .attr("opacity", 0.0)
+       .on("interrupt", function(d) { 
+           console.log("interrupted 1"); 
+       })
+       .transition()
+       .duration(transitionDuration)
+       .attr("opacity", 1.0)
+       .on("interrupt", function(d) { 
+           console.log("interrupted 2"); 
+       });
+}
+    
+function interrupt()
+   {
+      svg.selectAll("*").interrupt(); // select all the visuals and for all of them, call interupt()
+   }    
+
+    
