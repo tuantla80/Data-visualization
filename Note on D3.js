@@ -281,7 +281,7 @@ d3.select("button#decrement").on("click",
     d3.select("label#currentYearLabel").html(year); // NOTE: using html() function
     //... some code below...
     
-/* 16. Navigation using Slider 
+/* 17. Navigation using Slider 
 Inside body make:
    <div>
         <button id="decrement">-</button>  <!-- make decrement button with symbol -  -->
@@ -311,7 +311,7 @@ d3.select("input#slider").on("input",  // "input" control is "slider"
        });    
     
     
-/* 17. Animation using Transition 
+/* 18. Animation using Transition 
 In the body make:
   <div style="position: relative; left:100px; top:10px;">
        <button onclick="transitionPosition()">Position</button> <!-- will call transitionPosition() when click on Position -->
@@ -405,4 +405,19 @@ function interrupt()
       svg.selectAll("*").interrupt(); // select all the visuals and for all of them, call interupt()
    }    
 
+/* 19. Interactivity using the Mouse */
+var select = svg.selectAll("circle")
+                 .data(data);
+select.enter()
+      .append("circle")
+      .on("mousemove", function (d) { 
+           console.log(d3.event); // display all events
+           console.log(d3.event.pageX, d3.event.pageY) // display position of mouse
+      .on("mouseover", function (d) { console.log("mouseover")})
+      .on("mouseout", function (d) { console.log("mouseout")})
+      .on("mouseup", function (d) { console.log("mouseup")})
+      .on("mousedown", function (d) { console.log("mousedown")})
+      .on("click", function (d) { console.log("click")})
+      .on("doubleclick", function (d) { console.log("doubleclick")})
+})
     
