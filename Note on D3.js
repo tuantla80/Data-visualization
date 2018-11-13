@@ -310,7 +310,6 @@ d3.select("input#slider").on("input",  // "input" control is "slider"
            update(currentYear, nested.get(this.value));
        });    
     
-    
 /* 18. Animation using Transition 
 In the body make:
   <div style="position: relative; left:100px; top:10px;">
@@ -437,10 +436,10 @@ div.tooltip {
 }
 */   
 // Define the div for the tooltip
-var div = d3.select("body")
-             .append("div")	
-             .attr("class", "tooltip")	// refer to div.tooltip above			
-             .style("opacity", 0);
+var div_tooltip = d3.select("body")
+                    .append("div")	
+                    .attr("class", "tooltip")	// refer to div.tooltip above			
+                    .style("opacity", 0);
 // Add the scatterplot
 svg.selectAll("dot")	
    .data(data)			
@@ -450,27 +449,26 @@ svg.selectAll("dot")
    .attr("cx", function(d) { return x(d.date); })		 
    .attr("cy", function(d) { return y(d.close); })		
    .on("mouseover", function(d) {		
-      div.transition()		
-          .duration(200) // 200ms		
-          .style("opacity", .9);		
-      div.html(formatTime(d.date) + "<br/>"  + d.close)	
-          .style("left", (d3.event.pageX) + "px")		
-          .style("top", (d3.event.pageY - 28) + "px");	
+      div_tooltip.transition()		
+                 .duration(200) // 200ms		
+                 .style("opacity", .9);		
+      div_tooltip.html(formatTime(d.date) + "<br/>"  + d.close)	
+                 .style("left", (d3.event.pageX) + "px")		
+                 .style("top", (d3.event.pageY - 28) + "px");	
       })					
   .on("mouseout", function(d) {		
-      div.transition()		
-         .duration(500)		
-         .style("opacity", 0);	
+      div_tooltip.transition()		
+                 .duration(500)		
+                 .style("opacity", 0);	
   });
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+/* 21. Highlighting a visual */  
+selected =null;
+.on("mousedown", function(d) {		
+  var clicked = d3.select(this) // clicked on a item
+  clicked.attr("stroke-width", 5) // and the its attribute
+  if (selected !=null && selected != clicked){
+     selected.attr("stroke-width", 1) //get its back to normal when selected to another item
+  }
+  selected=clicked;
+});    
