@@ -420,4 +420,57 @@ select.enter()
       .on("click", function (d) { console.log("click")})
       .on("doubleclick", function (d) { console.log("doubleclick")})
 })
+  
+/* 20. Creating a tooltip - display a HTML tooltip when hovering a mouse on a visual 
+Make a style as below:
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+*/   
+// Define the div for the tooltip
+var div = d3.select("body")
+             .append("div")	
+             .attr("class", "tooltip")	// refer to div.tooltip above			
+             .style("opacity", 0);
+// Add the scatterplot
+svg.selectAll("dot")	
+   .data(data)			
+   .enter()
+   .append("circle")								
+   .attr("r", 5)		
+   .attr("cx", function(d) { return x(d.date); })		 
+   .attr("cy", function(d) { return y(d.close); })		
+   .on("mouseover", function(d) {		
+      div.transition()		
+          .duration(200) // 200ms		
+          .style("opacity", .9);		
+      div.html(formatTime(d.date) + "<br/>"  + d.close)	
+          .style("left", (d3.event.pageX) + "px")		
+          .style("top", (d3.event.pageY - 28) + "px");	
+      })					
+  .on("mouseout", function(d) {		
+      div.transition()		
+         .duration(500)		
+         .style("opacity", 0);	
+  });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
