@@ -15,7 +15,7 @@ This file is to give some notes on:
          processEscapes: true
          },
         "HTML-CSS": { fonts: ["TeX"] }
-      });
+      }); 
     </script>
     - <script type="text/javascript" src="path-to-MathJax/MathJax.js"> </script>
  - Step 2: Choose an editor to convert math equation to Latex. Use one of the following:
