@@ -6,7 +6,7 @@ This file is to give some notes on:
     ```<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>``` 
     </br>
     
-   ```<script type="text/x-mathjax-config">
+   <script type="text/x-mathjax-config">
    MathJax.Hub.Config({
       extensions: ["tex2jax.js"],
       jax: ["input/TeX", "output/HTML-CSS"],
@@ -17,7 +17,7 @@ This file is to give some notes on:
       },
      "HTML-CSS": { fonts: ["TeX"] }
    });
-   </script>```
+   </script>
    
    </br>
    
