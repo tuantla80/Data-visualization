@@ -20,5 +20,5 @@ This file is to give some notes on:
     </script>
     <script type="text/javascript" src="path-to-MathJax/MathJax.js"> </script>
     - Step 2: Choose an editor to convert math equation to Latex. Use one of the following:
-     - https://www.latex4technics.com/
-     - https://www.tutorialspoint.com/latex_equation_editor.htm
+        - https://www.latex4technics.com/
+        - https://www.tutorialspoint.com/latex_equation_editor.htm
