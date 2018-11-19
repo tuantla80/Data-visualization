@@ -1,8 +1,7 @@
 This file is to give some notes on:
 1. D3.js: To reduce the time when developing a data visualization dashboard using D3.js.
 2. Mathjax (https://www.mathjax.org): 
-   Refer to file math_equation.html at the folder for all implementation
-   To display math equation beaitifully on the browser.
+   Refer to file <b> math_equation.html </b> at the folder for all implementation. To display math equation beaitifully on the browser do the following steps.
 - Step 1. Getting and configure it to display math equation inline with text or in a new line. (http://docs.mathjax.org/en/latest/configuration.html)
     - <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
     - <script type="text/x-mathjax-config">
