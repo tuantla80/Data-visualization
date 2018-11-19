@@ -5,7 +5,7 @@ This file is to give some notes on:
    To display math equation beaitifully on the browser.
 - Step 1. Getting and configure it to display math equation inline with text or in a new line. (http://docs.mathjax.org/en/latest/configuration.html)
     - <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-    <script type="text/x-mathjax-config">
+    - <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
          extensions: ["tex2jax.js"],
          jax: ["input/TeX", "output/HTML-CSS"],
