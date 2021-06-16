@@ -35,6 +35,36 @@
   plotly==4.14.3
   pandas==1.1.3
   gunicorn==20.0.4
+  ```  
+  gunicorn is a WSGI HTTP server that is frequently used for deploying Flask apps to production.  
+  - Create 'Procfile' file with the below content. Note: Procfile with capital P and without extension  
   ```
-  
+  web: gunicorn app:server
+  ```
+  app above is name of python file (app.py) to run this application.  
+  This file let Heroku app know what commands should be executed to start your app. In this case, it starts a gunicorn server for your dashboard.  
+- Step 5.  
+  - Initialize a Git repository in your project’s root directory: git command line  
+  ```
+  > git init
+  ```
+  - Making .gitignore in the root directory. Example as below.
+  ```
+  *.pyc
+  test_folder
+  ```
+  - Do the following common git command line.  
+  ```
+  > git status
+  > git add .
+  > git commit -m "your comment"
+  ```
+- Step 6
+  - Create an app in Heroku, push your code there using Git, and start the app in one of Heroku’s free server options
+  ``` 
+  > heroku create APP-NAME # Choose a name for your app
+  > git push heroku master
+  > heroku ps:scale web=1
+  ```
+  - 
 
