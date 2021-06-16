@@ -72,4 +72,10 @@
   > heroku login
   > heroku apps
   > heroku plugins
+  ```  
+- Step 7. If modified code, do the following commands to update.  
+  ```
+  > git add . # add changes
+  > git commit -m 'change description'
+  > git push heroku master # deploy to Heroku
   ```
