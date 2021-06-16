@@ -25,10 +25,16 @@
   server = app.server  
   ```  
 - Step 4
-  - Create file 'runtime.txt' with the below content to let Heroku automatically detect Python app and will use the correct buildpack.
+  - Create 'runtime.txt' file with the below content to let Heroku automatically detect Python app and will use the correct buildpack.
   ```
   python-3.8.5
   ```
-  - 
+  - Create 'requirements.txt' file with the below content. You may need to use: pip freez > requirements.txt 
+  ```
+  dash==1.20.0
+  plotly==4.14.3
+  pandas==1.1.3
+  gunicorn==20.0.4
+  ```
   
 
