@@ -44,7 +44,7 @@
   app above is name of python file (app.py) to run this application.  
   This file let Heroku app know what commands should be executed to start your app. In this case, it starts a gunicorn server for your dashboard.  
 - Step 5.  
-  - Initialize a Git repository in your project’s root directory: git command line  
+  - Initialize a Git repository in your project’s root directory. Using git command line as below.  
   ```
   > git init
   ```
@@ -53,7 +53,7 @@
   *.pyc
   test_folder
   ```
-  - Do the following common git command line.  
+  - Do the following common git command lines.  
   ```
   > git status
   > git add .
@@ -66,5 +66,10 @@
   > git push heroku master
   > heroku ps:scale web=1
   ```
-  - 
-
+  - Some others command lines may be helpful sometime  
+  ```
+  > heroku logout
+  > heroku login
+  > heroku apps
+  > heroku plugins
+  ```
