@@ -8,7 +8,8 @@
 - Step 1: 
   - Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)  
   - Install [git bash](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  
-  - ``` C:\Users\tuantla>git --version
+  ``` 
+  C:\Users\tuantla>git --version
         git version 2.28.0.windows.1
 
         C:\Users\tuantla>heroku --version
