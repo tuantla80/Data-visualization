@@ -3,7 +3,9 @@
   1. Flask: web server functionality.
   2. React.js: renders the web interface.
   3. Plotly.js: generates the interactive charts (The core of plotlly is D3.js).
-### 1. [Covid19 App](https://github.com/tuantla80/Plotly-Dash-Web-Apps/tree/master/Covid19%20App%20by%20Plotly)
+### 1. Covid19 App
+- [Source code](https://github.com/tuantla80/Plotly-Dash-Web-Apps/tree/master/Covid19%20App%20by%20Plotly)  
+- [plot](https://github.com/tuantla80/Plotly-Dash-Web-Apps/blob/master/Covid19%20App%20by%20Plotly/sample_data/DEMO.png)
 ### 2. Deploy an app to Heroku  
 - Step 1
   - Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)  
