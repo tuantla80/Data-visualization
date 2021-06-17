@@ -11,7 +11,7 @@ from mdb import MongoDB
 ########################################################################################################################
 # I. DATA ANALYSIS
 
-flag_mongodb = True
+flag_mongodb = False
 
 if flag_mongodb:
     print('Data is received from MongoDB')
