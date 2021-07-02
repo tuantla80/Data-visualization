@@ -6,8 +6,11 @@
 ### 1. Covid19 App
 - [Source code](https://github.com/tuantla80/Plotly-Dash-Web-Apps/tree/master/Covid19%20App%20by%20Plotly)
 - [Website on Heroku](https://covid-19-tracking-at-apf.herokuapp.com/) 
-  ![plot](https://github.com/tuantla80/Plotly-Dash-Web-Apps/blob/master/Covid19%20App%20by%20Plotly/sample_data/DEMO.png)
-### 2. Deploy an app to Heroku  
+  ![plot](https://github.com/tuantla80/Plotly-Dash-Web-Apps/blob/master/Covid19%20App%20by%20Plotly/sample_data/DEMO.png)  
+### 2. Sale Dashboard App
+- [Source code](https://github.com/tuantla80/Plotly-Dash-Web-Apps/tree/master/Sale%20Dashboard%20App)  
+  ![plot](https://github.com/tuantla80/Plotly-Dash-Web-Apps/blob/master/Sale%20Dashboard%20App/Sale%20dashboard%20demo.png)  
+### 3. Deploy an app to Heroku  
 - Step 1
   - Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)  
   - Install [git bash](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  
